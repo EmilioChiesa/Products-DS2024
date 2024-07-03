@@ -78,4 +78,19 @@ export class ProductsService {
         }
         return product;
     }
+
+    async searchByName(name: string): Promise<ProductEntity[]> {
+        const products = await this.productRepository
+          .createQueryBuilder('product')
+          .leftJoinAndSelect('product.productType', 'productType')
+          .where('LOWER(product.name) LIKE LOWER(:name)', { name: `%${name}%` })
+          .getMany();
+    
+        if (!products.length) {
+          throw new NotFoundException('No products found');
+        }
+    
+        return products;
+      }
+    
 }

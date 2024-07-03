@@ -15,7 +15,7 @@ export class ProductsController {
     }
 
     @UseGuards(new AuthGuard(2))
-    @Get()
+    @Get('/show')
     async findAll(): Promise<ProductEntity[]> {
         return await this.service.findAll();
     }
@@ -29,6 +29,12 @@ export class ProductsController {
         } catch(error) {
             throw new NotFoundException(error.message);
         }
+    }
+
+    @UseGuards(new AuthGuard(2))
+    @Get('/search/:name')
+    async searchByName(@Param('name') name: string): Promise<ProductEntity[]> {
+        return await this.service.searchByName(name);
     }
 
     @UseGuards(new AuthGuard(1))
