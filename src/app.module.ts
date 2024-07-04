@@ -9,11 +9,11 @@ import { ProductsTypeModule } from './products-type/products-type.module';
 @Module({
   imports: [
     ProductsModule,
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database:'products.db',
-      entities,
-      synchronize:true,
+    TypeOrmModule.forRoot({  //Indico las entidades que voy a utilizar
+      type: 'sqlite', //Indico que voy a usar una base de datos sqlite
+      database:'products.db', //Nombre de la base de datos
+      entities, //Entidades que voy a utilizar
+      synchronize:true, //Sincronizar la base de datos
     }),
     ProductsTypeModule,
 

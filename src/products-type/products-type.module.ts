@@ -1,3 +1,4 @@
+//Importa las dependencias necesarias
 import { Module } from '@nestjs/common';
 import { ProductsTypeController } from './products-type.controller';
 import { ProductsTypeService } from './products-type.service';
@@ -6,7 +7,7 @@ import { ProductTypeEntity } from 'src/entities/productType.entity';
 import { ProductEntity } from 'src/entities/product.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ProductEntity,ProductTypeEntity]),],
+  imports: [TypeOrmModule.forFeature([ProductEntity,ProductTypeEntity]),], //Define las entidades a utilizar
   controllers: [ProductsTypeController],
   providers: [ProductsTypeService]
 })

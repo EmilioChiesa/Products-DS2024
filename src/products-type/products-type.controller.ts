@@ -1,3 +1,4 @@
+
 import { Body, Controller,Get,NotFoundException,Param,ParseIntPipe,Post, Put, UseGuards } from '@nestjs/common';
 import { ProductsTypeService } from './products-type.service';
 import { ProductEntity } from 'src/entities/product.entity';
@@ -7,7 +8,7 @@ import { AuthGuard } from 'src/middlewares/auth.middleware';
 
 @Controller('products-type')
 export class ProductsTypeController {
-    constructor(private service:ProductsTypeService){}
+    constructor(private service:ProductsTypeService){} 
 
     @UseGuards(new AuthGuard(1))
     @Post()
